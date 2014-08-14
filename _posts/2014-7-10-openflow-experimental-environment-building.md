@@ -88,16 +88,20 @@ Centos 6.5中使用floodlight+openvswitch+kvm构建虚拟环境
 >
 >     ovs-brcompatd --pidfile –-detach
 >
->12.创建openvswitch.sh脚本，每次启动时执行该脚本即可完成启动
+>12.创建setup.sh脚本，每次启动时执行该脚本即可完成启动
 >
 >     rmmod bridge
->     insmod datapath/linux/openvswitch_mod.ko
+>     insmod datapath/linux/openvswitch.ko
 >     insmod datapath/linux/brcompat.ko
 >     ovsdb-server /usr/local/etc/openvswitch/conf.db --remote=punix:/usr/local/var/run/openvswitch/db.sock --pidfile --detach
 >     ovs-vsctl --no-wait init
 >     ovs-vswitchd --pidfile --detach
->     ovs-brcompatd --pidfile –-detach
-
+>     ovs-brcompatd --pidfile --detach
+>
+>13.创建setdown.sh脚本，每次停止Open vSwitch daemons时执行该脚本即可
+>
+>     kill `cd /usr/local/var/run/openvswitch && cat ovsdb-server.pid ovs-vswitchd.pid`
+>
 
 
 	

@@ -90,6 +90,6 @@ Hedera: 数据中心网络动态流调度_NSDI_2010
 
 * 在容错方面，Hedera增加实现PortLand路由和容错协议。因此通过基本的Portland机制，Hedera能够感知故障，并将映射到故障组件的流重路由
 
- [1]: http://en.wikipedia.org/wiki/Bisection_bandwidth    "bisection bandwidth "
- [2]: http://en.wikipedia.org/wiki/Fat_tree      "fat tree"
- [3]: http://en.wikipedia.org/wiki/Simulated_annealing     "simulated annealing"
+[1]: http://en.wikipedia.org/wiki/Bisection_bandwidth    "bisection bandwidth"
+[2]: http://en.wikipedia.org/wiki/Fat_tree      "fat tree"
+[3]: http://en.wikipedia.org/wiki/Simulated_annealing     "simulated annealing"
