@@ -97,12 +97,18 @@ Centos 6.5中使用floodlight+openvswitch+kvm构建虚拟环境
 >     ovs-vsctl --no-wait init
 >     ovs-vswitchd --pidfile --detach
 >     ovs-brcompatd --pidfile --detach
+>     ovs-vsctl add-port s1 eth0
+>     ifconfig s1 192.168.0.18 netmask 255.255.255.0
+>     ifconfig eth0 0
+>     route del default gw 192.168.0.1
+>     route add default gw 192.168.0.1
 >
 >13.创建setdown.sh脚本，每次停止Open vSwitch daemons时执行该脚本即可
 >
+>     ovs-vsctl del-port s1 eth0
+>     ifconfig eth0 192.168.0.18 netmask 255.255.255.0
 >     kill `cd /usr/local/var/run/openvswitch && cat ovsdb-server.pid ovs-vswitchd.pid`
+>     ifconfig s1 0
+>     route del default gw 192.168.0.1
+>     route add default gw 192.168.0.1
 >
-
-
-	
-	
