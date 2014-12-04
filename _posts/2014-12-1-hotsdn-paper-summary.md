@@ -68,10 +68,11 @@ tags : [tech]
       Fast, Accurate Simulation for SDN Prototyping hotsdn13 University of Wisconsin
       introduce fs-sdn that a simulation based tool and compare with mininet
 
-      High-Fidelity Switch Models for Software-Defined Network Emulation hotsdn13 University of California, San Diego
+      High-Fidelity Switch Models for Software-Defined Network Emulation hotsdn13 University of California,San Diego
       emulator proxy between controller and ovs
 
-      Splendid Isolation: A Slice Abstraction for Software-Defined Networks
+      Splendid Isolation: A Slice Abstraction for Software-Defined Networks hotsdn12 Cornell
+      abstract network slice with vlan
 
 *****
 
@@ -103,9 +104,6 @@ tags : [tech]
 
       Cheap Silicon: a Myth or Reality? Picking the Right Data Plane Hardware for Software Defined Networking hotsdn13 Ericsson Research
       compare data plane programmable hardware with hard coded chip
-
-      Splendid Isolation: A Slice Abstraction for Software-Defined Networks hotsdn12 Cornell
-      abstract network slice with vlan
 
 *****
 
