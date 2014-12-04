@@ -290,7 +290,7 @@ middlebox：是一种计算机网络设备，除了一般的转发行为外，�
       Dynamic Graph Query Primitives for SDN-based Cloud Network Management hotsdn12 IBM Research
       provide underlying gragh view
 
-      Programming Your Network at Run-time for Big Data Applications IBM Research
+      Programming Your Network at Run-time for Big Data Applications hotsdn12 IBM Research
       integrated control application management
 
 *****
