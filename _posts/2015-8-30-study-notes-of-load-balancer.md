@@ -15,21 +15,21 @@ LB部署方式：路由模式（推荐）<br>
 服务器的网关必须设置成负载均衡机的LAN口地址，且与WAN口分署不同的逻辑网络，因此所有返回的流量也都经过负载均衡。这种方式对网络的改动小，能均衡任何下行流量。
 
 >
->![]({{ site.img_url }}/2015-8-30/1.JPG)
+>![]({{ site.img_url }}/2015-8-30/1.jpg)
 >
 
 桥接模式（不推荐）<br>
 负载均衡的WAN口和LAN口分别连接上行设备和下行服务器，LAN口不需要配置IP（WAN口与LAN口是桥连接），所有的服务器与负载均衡均在同一逻辑网络中。由于这种安装方式容错性差，网络架构缺乏弹性，对广播风暴及其他生成树协议循环相关联的错误敏感。
 
 >
->![]({{ site.img_url }}/2015-8-30/2.JPG)
+>![]({{ site.img_url }}/2015-8-30/2.jpg)
 >
 
 DSR（Direct Server Reply）模式<br>
 负载均衡的LAN口不使用，WAN口与服务器在同一个网络中，互联网的客户端访问负载均衡的虚IP（VIP），VIP对应负载均衡机的WAN口，负载均衡根据策略将流量分发到服务器上，服务器直接响应客户端的请求。由于返回的流量是不经过负载均衡的，因此这种方式适用大流量高带宽要求的服务。
 
 >
->![]({{ site.img_url }}/2015-8-30/3.JPG)
+>![]({{ site.img_url }}/2015-8-30/3.jpg)
 >
 
 *****
@@ -56,6 +56,10 @@ in-band指通过普通的数据流来确定Server是否可用，例如TCP连接S
 
 在DSR模式下，LB设备只转换Client发送包的目的MAC地址（转换为Real Server的MAC地址），而目的IP地址不做任何转换，仍然为VIP（一般情况下，IP一旦转换，响应时就不得不经过LB）。<br>
 由于是利用MAC地址来将请求发给Real Server，所以Real Server需要和LB设备处于同一个L2 Domain。但不足之处就是这样Server拿到是Client的Real IP，使得Client和Server之间存在耦合。
+
+>
+>![]({{ site.img_url }}/2015-8-30/4.jpg)
+>
 
 在DSR模式下，为了使Real Server接收请求数据包，我们必须让Real server也拥有VIP。但是在同一个L2 Domain中，怎么能让两个不同的Host拥有一个相同的IP呢？这里实际上是一个小trick。<br>
 在Real server上，我们需要将VIP配置在其loopback上。loopback是一个逻辑的IP接口，在其上面配置的IP不会响应任何的ARP请求。所以即使Real Server的loopback上配置VIP，除了它自己，其它任何设备都不知道，从而也就不会引发ARP冲突。
