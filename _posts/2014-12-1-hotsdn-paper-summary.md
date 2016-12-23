@@ -10,7 +10,7 @@ tags : [tech]
 
 *****
 
-###网络操作系统
+网络操作系统<br>
 `——————————`<br>
 应用层<br>
 `——————————`<br>
@@ -38,7 +38,7 @@ tags : [tech]
 
 *****
 
-###控制器层编程语言
+控制器层编程语言
 
       A Balance of Power: Expressive, Analyzable Controller Programming hotsdn13 Worcester Polytechnic Institute
       a language to build controller program
@@ -48,7 +48,7 @@ tags : [tech]
 
 *****
 
-###网络虚拟化和NFV
+网络虚拟化和NFV<br>
 `——————————`<br>
 应用层<br>
 `——————————`<br>
@@ -76,7 +76,7 @@ tags : [tech]
 
 *****
 
-###交换机层转发机制
+交换机层转发机制
 
       Application-aware Data Plane Processing in SDN hotsdn14 University of Minnesota
       stateless->stateful
@@ -107,7 +107,7 @@ tags : [tech]
 
 *****
 
-###Rule Caching
+Rule Caching
 
       Flow Caching for High Entropy Packet Fields hotsdn14 Stanford University
       cache flow entries with high entropy that change often
@@ -123,7 +123,7 @@ tags : [tech]
 
 *****
 
-###Switching and Routing
+Switching and Routing
 
       Using MAC Addresses as Efficient Routing Labels in Data Centers hotsdn14 University of Paderborn
       hierarchical mac addresses
@@ -136,7 +136,7 @@ tags : [tech]
 
 *****
 
-###Rule Updating
+Rule Updating
 
       ESPRES: Transparent SDN Update Scheduling hotsdn14 Université catholique de Louvain
       rules update installation->scheduling problem
@@ -158,7 +158,7 @@ tags : [tech]
 
 *****
 
-###Middlebox
+Middlebox<br>
 middlebox：是一种计算机网络设备，除了一般的转发行为外，还负责流量的转化、检测、过滤等。常见的例子包括防火墙机制(隔离恶意流量), 网络地址转换(修改数据报的源目地址)。专用的middlebox硬件设备被广泛地部署在企业级网络中, 以提升performance和security。
 
       Don’t Call Them Middleboxes, Call Them Middlepipes hotsdn14 IBM Research
@@ -172,7 +172,7 @@ middlebox：是一种计算机网络设备，除了一般的转发行为外，�
 
 *****
 
-###容错性
+容错性
 
       Five Nines of Southbound Reliability in Software-Defined Networks hotsdn14 University of Murcia
    
@@ -195,7 +195,7 @@ middlebox：是一种计算机网络设备，除了一般的转发行为外，�
 
 *****
 
-###OpenFlow协议改进
+OpenFlow协议改进
 
       tinyNBI: Distilling an API from essential OpenFlow abstractions hotsdn14 Texas A&M University
       openflow->simple API
@@ -211,7 +211,7 @@ middlebox：是一种计算机网络设备，除了一般的转发行为外，�
 
 *****
 
-###对接传统网络
+对接传统网络
       
       ProCel: Smart Trafﬁc Handling for a Scalable Software EPC hotsdn14 Stanford University
       EPC(Evolved Packet Core)，4G的核心网
@@ -234,7 +234,7 @@ middlebox：是一种计算机网络设备，除了一般的转发行为外，�
 
 *****
 
-###多域SDN网络
+多域SDN网络
       
       A Resource Delegation Framework for Software Deﬁned Networks hotsdn14 RENCI/UNC Chapel Hill
       controller placement and coordination/big switch abstraction problem->resource management problem
@@ -259,7 +259,7 @@ middlebox：是一种计算机网络设备，除了一般的转发行为外，�
 
 *****
 
-###应用层
+应用层
 
       Testing Stateful and Dynamic Data Planes with FlowTest hotsdn14 Carnegie Mellon University
       explore the state space of the network data plane
@@ -295,7 +295,7 @@ middlebox：是一种计算机网络设备，除了一般的转发行为外，�
 
 *****
 
-###Security
+Security
 
       FLOWGUARD: Building Robust Firewalls for Software-Defined Networks hotsdn14 Clemson University
 
@@ -308,7 +308,7 @@ middlebox：是一种计算机网络设备，除了一般的转发行为外，�
 
 *****
 
-###Wireless
+Wireless
 
       SoftRAN: Software Defined Radio Access Network hotsdn13 Stanford University
 
