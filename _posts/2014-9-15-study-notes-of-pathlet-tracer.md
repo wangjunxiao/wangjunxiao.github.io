@@ -11,19 +11,19 @@ Pathlet Tracer: Enabling Layer 2 Pathlet Tracing through Context Encoding in Sof
 
 *****
 
-##What's the question
+`What's the question`
 
 In this paper, we introduce a `Layer 2 path tracing` utility named `PathletTracer`. PathletTracer offers an interface for users to specify multiple Layer 2 paths to inspect. Based on the Layer 2 paths of `interests`, PathletTracer then accounts paths with `identifiable IDs`, and installs a set of flow table entries into switches to `imprint path IDs` on the packets going through.
 
 *****
 
-##Why study
+`Why study`
 
 `Troubleshooting` Software-Defined Networks requires a `structured approach` to detect mistranslations between `high-level intent` (policy) and `low-level forwarding behavior`, and a flexible on-demand `packet tracing tool` is highly desirable on the `data plane`.
 
 *****
 
-##Innovativeness
+`Innovativeness`
 
 PathletTracer re-uses some fields in packet headers such as the `ToS octet` for recording `path IDs`. To efficiently carry imprints using `limited bits`, PathletTracer uses an `encoding algorithm` motivated by the `calling context encoding scheme` in the `software engineering domain`. With `k bits` for encoding, PathletTracer is able to trace more than `2^k` paths simultaneously.
 
@@ -36,7 +36,7 @@ software engineering approach to encode program calling context. For example, as
 
 *****
 
-##Introduction
+`Introduction`
 
 For correct troubleshooting of SDN operations, it is necessary to verify whether the `low-level actions` performed by `network devices` conform to the `highlevel policies` deployed by operators. In this paper we focus on `path tracing`, a specific operation for SDN troubleshooting that determines the `Layer 2 path` taken by a given packet.
 <br>
@@ -60,7 +60,7 @@ The `scalability` of PathletTracer depends on `how`, `where`, and `when` the cen
 
 *****
 
-##ARCHITECTURE
+`ARCHITECTURE`
 
 The main components of PathletTracer as shown below.
 
@@ -82,7 +82,7 @@ An overview of the PathletTracer workflow is shown below. Given a set of pathlet
 
 *****
 
-##OFFLINE ENCODING
+`OFFLINE ENCODING`
 
 we describe how we encode network paths using concepts from the `calling context encoding`. First, the encoder builds a `forest of directed acyclic graphs` (DAGs) by composing the valid paths to be traced. On each DAG, the encoder creates a `virtual root node`, and adds a link from it to all the nodes with `0 indegree`. two DAGs by composing the seven paths in Figure shown above. G1 contains only the path 6 → 5 → 3 → 2 → 1 as it does not share any link with the other 6 paths; G2 contains the rest of the 6 paths as they share some links between each other.
 
@@ -110,7 +110,7 @@ The `decoder` uses the `codebook` to serve path queries. When a user sends a `qu
 
 *****
 
-##ONLINE ENCODING
+`ONLINE ENCODING`
 
 After computing the path IDs, the encoder generates `control messages` for all switches in the `DAGs` to enable `online path tracing`. These messages create rules in switches to imprint the `encoded IDs` to `packets in transit`. While the original `PCCE` work used arithmetic addition operations to record this information (e.g., ID = ID + 4), similar operations on packet header fields are not supported in existing OpenFlow table action sets; thus we need to make per-site additions in calling context encoding OpenFlow-compatible.
 
