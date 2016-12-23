@@ -11,7 +11,7 @@ PortLand: 可扩展的二层容错数据中心网络架构_SIGCOMM_2009
 
 *****
 
-####`Introduction`
+`Introduction`
 
 * 理想情况下，DCN架构和管理员将对交换机使用“[即插即用][1]”的部署方案。这样一个场景相应的需求: 
 
@@ -23,7 +23,7 @@ PortLand: 可扩展的二层容错数据中心网络架构_SIGCOMM_2009
 
 ******
 
-####`Fabric Manager`
+`Fabric Manager`
 
 * PortLand部署了一个逻辑集中的fabric manager，维护网络配置信息例如拓扑
 
@@ -35,7 +35,7 @@ PortLand: 可扩展的二层容错数据中心网络架构_SIGCOMM_2009
 
 *****
 
-####`Positional Pseudo MAC Addresses`
+`Positional Pseudo MAC Addresses`
 
 * 实现有效的转发、路由以及VM迁移的基础就是分层Pseudo MAC（PMAC）地址。PortLand为每个host分配一个唯一的PMAC，PMAC包含host所在位置的编码。例如，同一个pod内的所有host的PMAC前缀是相同的
 
@@ -62,7 +62,7 @@ PortLand: 可扩展的二层容错数据中心网络架构_SIGCOMM_2009
 
 *****
 
-####`Proxy-based ARP`
+`Proxy-based ARP`
 
 * 以太网默认将ARP请求广播给同个二层域中的所有host。PortLand利用fabric manager来减轻这一广播负载
 
@@ -100,7 +100,7 @@ PortLand: 可扩展的二层容错数据中心网络架构_SIGCOMM_2009
 
 *****
 
-####`Distributed Location Discovery`
+`Distributed Location Discovery`
 
 * PortLand交换机利用它们在全局拓扑中的位置执行有效地转发和路由。因此在确定位置前交换机不进行包转发，并且不需要管理员的人为设置和干预。为了完全实现PortLand的“即插即用”，提出location discovery protocol（LDP）
 
@@ -136,7 +136,7 @@ PortLand: 可扩展的二层容错数据中心网络架构_SIGCOMM_2009
 
 *****
 
-####`Provably Loop Free Forwarding`
+`Provably Loop Free Forwarding`
 
 * 一旦交换机利用LDP确定了位置，就会从邻居交换机获取信息并填充自身的转发表。例如，核心交换机从直连的汇聚交换机获取pod号。转发数据包时，核心交换机简单地检查数据包PMAC对应的pod号就能确定适当的输出端口。同样地，汇聚交换机从直连的边缘交换机获取position号。汇聚交换机必须通过检查数据包的PMAC确定目的host是否位于本pod中，如果目的host位于本pod中，那么汇聚交换机就将数据包转发到PMAC指定position所对应的边缘交换; 如果目的host位于其他pod中，（无故障时）汇聚交换机可以将数据包转发到任意一个直连的核心交换机。在考虑负载均衡的情况下，可以借助相关技术选择合适的输出端口。fabric manager将会下发一系列流表项重写默认的单个流转发行为
 
@@ -156,7 +156,7 @@ for converting a down-packet to an up-packet. In order for a switch to receive t
 
 *****
 
-####`Fault Tolerant Routing`
+`Fault Tolerant Routing`
 
 * LDP除了确定交换机位置外的一个重要作用就是liveness monitoring session 
 
@@ -198,7 +198,7 @@ for converting a down-packet to an up-packet. In order for a switch to receive t
 
 *****
 
-####`System Architecture`
+`System Architecture`
 
 >
 >![]({{ site.img_url }}/2014-8-14/architecture.JPG)
