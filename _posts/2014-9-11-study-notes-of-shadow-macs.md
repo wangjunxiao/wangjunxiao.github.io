@@ -11,19 +11,19 @@ Shadow MACs: Scalable Label-switching for Commodity Ethernet_HotSDN_2014
 
 *****
 
-#What's the question
+`What's the question`
 
 we demonstrate that using `destination MAC addresses` as opaque `forwarding labels` allows an SDN controller to leverage large MAC (L2) forwarding tables to manage a plethora of `fine-grained` paths.
 
 *****
 
-##Why study
+`Why study`
 
 While SDN promises `fine-grained`, dynamic control of the network, in practice limited switch TCAM rule space restricts most forwarding to be `coarse-grained`. Current switches have only a few thousand flexible rules, making it hard to provide even `host-pair granularity` for forwarding, so forwarding is typically based on `aggregates` 
 
 *****
 
-##Innovativeness
+`Innovativeness`
 
 In this shadow MAC model, the SDN controller can install `MAC rewrite rules` at the network edge to guide traffic on to intelligently selected paths to balance traffic, avoid failed links, or route flows through middleboxes. 
 <br>
@@ -36,13 +36,13 @@ In this paper, we make the following contributions:
 
 *****
 
-##Introduction
+`Introduction`
 
 Shadow MACs, as forwarding labels. Unlike `traditional (physical) MAC addresses`, shadow MACs are not associated with a particular `physical endpoint` in the network. Rather, they are `opaque values` akin to `MPLS labels`. `Shadow MAC forwarding rules` can be installed in the `L2 forwarding tables`, which are typically the largest tables available with 100,000+ entries.
 
 *****
 
-##Design
+`Design`
 
 ***1. Control Plane***
 
@@ -74,7 +74,7 @@ we use shadow MACs to configure two different routes between a source (A) and de
 
 *****
 
-##KEY BENEFITS
+`KEY BENEFITS`
 
 **Minimal TCAM Usage:** we use `no` TCAM rules in the network `core` for forwarding and `at most one` TCAM entry per `edge` switch per active shadow MAC sourced or drained by a directlyconnected host. In virtualized environments, MAC rewriting can be performed in the hypervisor vSwitches, reducing the physical switch TCAM requirement to `zero`. With ARP spoofing, `no` TCAM entries are used at the edge, except possibly at the egress if host stacks are `unmodified`.
 
