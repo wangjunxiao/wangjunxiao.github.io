@@ -11,7 +11,7 @@ ECMP: Analysis of an Equal-Cost Multi-Path Algorithm_RFC2992_2000
 
 *****
 
-####`Introduction`
+`Introduction`
 
 * Equal-cost multi-path (ECMP) is a routing technique for routing packets along **multiple paths of equal cost**. The forwarding engine identifies paths by **next-hop**. 
 
@@ -21,7 +21,7 @@ ECMP: Analysis of an Equal-Cost Multi-Path Algorithm_RFC2992_2000
 
 *****
 
-####`Analysis`
+`Analysis`
 
 * There are a few concerns when choosing an algorithm for deciding which next-hop to use. One is **performance**, the computational requirements to run the algorithm. Another is **disruption** (i.e., the changing of which path a flow uses). **Balancing** is a third concern; however, since the algorithm’s balancing characteristics are directly related to the **chosen hash function** this analysis does not treat this concern in depth.
 
@@ -78,7 +78,7 @@ ECMP: Analysis of an Equal-Cost Multi-Path Algorithm_RFC2992_2000
 
 *****
 
-####`Comparison to other algorithms`
+`Comparison to other algorithms`
 
 * **Modulo-N** is a "simpler" form of hash-threshold. Given N next-hops the packet header fields which describe the flow are run through a hash function. A final modulo-N is applied to the output of the hash. This result then directly maps to one of the next-hops. Modulo-N is the **most disruptive** of the algorithms; if a next-hop is added or removed the disruption is **(N-1)/N**. The performance of Modulo-N is equivalent to hash-threshold.
 
@@ -93,7 +93,7 @@ always **1/N**.) The disadvantage with HRW is that the next-hop selection is mor
 
 *****
 
-####`Security Considerations`
+`Security Considerations`
 
 * The implementation of ECMP routing decision does not directly affect the security of the Internet Infrastructure.
 
