@@ -17,7 +17,7 @@ In this paper, we introduce a `Layer 2 path tracing` utility named `PathletTrace
 
 *****
 
-`Why study`
+`Why to study`
 
 `Troubleshooting` Software-Defined Networks requires a `structured approach` to detect mistranslations between `high-level intent` (policy) and `low-level forwarding behavior`, and a flexible on-demand `packet tracing tool` is highly desirable on the `data plane`.
 
