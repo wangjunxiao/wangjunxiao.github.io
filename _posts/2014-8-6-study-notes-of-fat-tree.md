@@ -10,7 +10,7 @@ A Scalable, Commodity Data Center Network Architecture_SIGCOMM_2008
 
 *****
 
-####`Introduction`
+`Introduction`
 
 * 设计数据中心的通信体系架构的目标: 
 
@@ -28,7 +28,7 @@ A Scalable, Commodity Data Center Network Architecture_SIGCOMM_2008
 
 *****
 
-####`Motivation`
+`Motivation`
 
 * 实现fat-tree网络中最大对剖带宽的要求是任意pod传出的流量都均匀分布在核心交换机
 
@@ -36,7 +36,7 @@ A Scalable, Commodity Data Center Network Architecture_SIGCOMM_2008
 
 *****
 
-####`Addressing`
+`Addressing`
 
 * k元fat-tree的IP分配私有区段10.0.0.0/8。pod中交换机的地址形如10.pod.switch.1，其中“pod”定义交换机所处pod编号（[0,k-1]），“switch”定义交换机在pod中所处位置（[0,k-1]，从左至右、从下至上递增）。核心交换机的地址形如10.k.j.i，j和i定义分别与pod内第j个汇聚交换机的第i个端口相连（[1,(k/2)]，从左至右递增）。host的地址形如10.pod.switch.ID，ID定义host在子网中所处位置（[2,k/2+1]，从左至右递增）
 
@@ -44,7 +44,7 @@ A Scalable, Commodity Data Center Network Architecture_SIGCOMM_2008
 
 *****
 
-####`Two-Level Routing Table`
+`Two-Level Routing Table`
 
 >
 >![]({{ site.img_url }}/2014-8-6/route.JPG)
@@ -60,7 +60,7 @@ A Scalable, Commodity Data Center Network Architecture_SIGCOMM_2008
 
 *****
 
-####`Routing Algorithm`
+`Routing Algorithm`
 
 * 主要分为两部分: 网络建立阶段，静态地生成所有路由表并且将其装载到交换机中; 动态路由协议负责检测个别交换机故障并且执行故障路径切换
 
@@ -97,7 +97,7 @@ A Scalable, Commodity Data Center Network Architecture_SIGCOMM_2008
 
 *****
 
-####`Flow Classification`
+`Flow Classification`
 
 * 通过动态重新分配pod内交换机的端口，避免可能出现的局部拥塞（两个流竞争同一个输出端口。即使其他未使用的端口存在等价路径）
 
@@ -116,7 +116,7 @@ A Scalable, Commodity Data Center Network Architecture_SIGCOMM_2008
 
 *****
 
-####`Flow Scheduling`
+`Flow Scheduling`
 
 * 通过中央调度程序实现流调度，减少大流间的重叠
 
