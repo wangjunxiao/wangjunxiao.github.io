@@ -10,14 +10,13 @@ tags : [research]
 Compiling Path Queries in Software-Defined Networks_HotSDN_2014
 
 *****
-
-##What's the question
+`What's the question`
 
 Monitoring the flow of traffic along network paths.
 
 *****
 
-##Why study
+`Why study`
 
 It's essential for SDN programming and troubleshooting. For example, traffic engineering requires measuring the ingress-egress traffic matrix; debugging a congested link requires determining the set of sources sending traffic through that link; and locating a faulty device might involve detecting how far along a path the traffic makes progress.
 
@@ -25,7 +24,7 @@ Tools such as NetFlow, sFlow, and SNMP are effective at monitoring flows, packet
 
 *****
 
-##Innovativeness
+`Innovativeness`
 
 Past path-based monitoring systems operate by diverting packets to collectors that perform `“after-the-fact”` analysis, at the expense of large data-collection overhead.
 <br> 
@@ -45,7 +44,7 @@ In summary, our contributions are:
 
 *****
 
-##Introduction
+`Introduction`
 
 In the context of SDN, NetSight(NSDI_2014) is an example towards the `Hoarder`(record as much information as possible, so users can specify a wide range of more refined queries after the fact) end of the spectrum: It creates a `postcard` for each packet at each hop in its journey. These postcards, which contain the `packet header`, the `matching flow entry`, and the `switch` and `output port`, are sent to servers that store them for later analyses, such as backtrace construction.
 
@@ -57,7 +56,7 @@ To achieve this, we record packets’ past trajectories onto bits on the packets
 
 ******
 
-##PATH-QUERY LANGUAGE
+`PATH-QUERY LANGUAGE`
 
 As shown below，the basic syntax of path expressions.
 
@@ -112,7 +111,7 @@ For instance, the path `p1 ^ p2` requires that a packet first traverse the path 
 
 *****
 
-##PATH QUERY COMPILATION
+`PATH QUERY COMPILATION`
 
 we achieve this goal by compiling the `queries` into `OpenFlow rules` that preserve the `underlying forwarding policy`, but add a few bits of `state` (i.e., a tag) to packets as they traverse the network.
 
