@@ -10,7 +10,7 @@ DCN Architecture Design Notes of Fat-Tree
 
 *****
 
-####`Introduction`
+`Introduction`
 
 * fat-tree网络架构由Charles E. Leiserson在1985年提出。[ “Fat-Trees: Universal Networks for Hardware-Efficient Supercomputing” ]
 
@@ -32,7 +32,7 @@ DCN Architecture Design Notes of Fat-Tree
 
 *****
 
-####`Blocking`
+`Blocking`
 
 * 上面提到的fat-tree网络在每个中间层保证: 通往上层（在二层网络中指的是边缘层通往核心层）的链路数量与通往下层（边缘层通往host）的链路数量相等（1: 1），这样的网络称之为non-blocking网络
 
@@ -40,7 +40,7 @@ DCN Architecture Design Notes of Fat-Tree
 
 *****
 
-####`Design`
+`Design`
 
 * 利用36-port商品交换机构建non-blocking的二层fat-tree网络连接70个节点(N=70, Pc=Pe=36):
 
