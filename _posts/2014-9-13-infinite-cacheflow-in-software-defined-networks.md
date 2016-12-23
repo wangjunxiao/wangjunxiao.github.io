@@ -11,25 +11,25 @@ Infinite CacheFlow in Software-Defined Networks_HotSDN_2014
 
 *****
 
-##What's the question
+`What's the question`
 
 we define a `hardware-software hybrid` switch design that relies on `rule caching` to provide `large rule tables` at low cost. Unlike traditional caching solutions. we neither cache `individual rules` (to respect rule dependencies) nor `compress rules` (to preserve the per-rule traffic counts). Instead we `“splice”` long dependency chains to cache smaller groups of rules while preserving the semantics of the `network policy`.
 
 *****
 
-##Why study
+`Why to study`
 
 Ternary Content Addressable Memory (TCAM) enables OpenFlow switches to process packets at high speed based on multiple header fields, today’s commodity switches support just thousands to tens of thousands of rules. To realize the potential of SDN on this hardware, we need efficient ways to support the abstraction of a switch with arbitrarily large rule tables.
 
 *****
 
-##Innovativeness
+`Innovativeness`
 
 Our design satisfies four core criteria: (1) `elasticity` (combining the best of hardware and software switches), (2) `transparency`(faithfully supporting native OpenFlow semantics, including traffic counters), (3) `fine-grained rule caching` (placing popular rules in the TCAM, despite dependencies on less-popular rules), and (4) `adaptability` (to enable incremental changes to the rule caching as the policy changes).
 
 *****
 
-##Computing Rule Dependencies
+`Computing Rule Dependencies`
 
 As shown below, an example with six rules that match a ternary format. If the TCAM can store four rules (k=4), we cannot select the four rules with highest weight (ie., R3, R4, R5, and R6), because packets that should match R1 (with pattern 0000) would match R3 (with pattern 000\*); similarly, some packets (with pattern 11\*\*) that should match R2 would match R4 (with pattern 1\*1\*). That is, rules R3 and R4 `depend` on rules R1 and R2, respectively.
 
@@ -53,7 +53,7 @@ Our algorithm constructs a single dependency graph, as shown in Figure (a).
 
 *****
 
-##Caching Groups of Dependent Rules
+`Caching Groups of Dependent Rules`
 
 We present a new algorithm that avoids catching low-weight rules. Each rule is assigned a `"cost"` corresponding to the number of rules that must be installed together and a `"weight"` corresponding to the number of packets expected to hit that rule. For example, R5 depends on R1 and R3, leading to a cost of 3, as shown in Figure (a). In this situation, R5 and R6 hold the majority of the weight, but cannot be simultaneously on the switch, as installing either has a cost of 3 and together they do not fit. The best we can do is to install rules R1, R2, R4 and R6. This maximizes total weight, subject to respecting all dependencies. 
 
@@ -65,7 +65,7 @@ On the example, this greedy algorithm selects R6 first (and its dependent-set {R
 
 *****
 
-##Splicing Long Chains of Dependent Rules
+`Splicing Long Chains of Dependent Rules`
 
 For Example, consider a firewall that has a single low-priority "accept" rule that depends on many high-priority "deny" rules that match relatively little traffic. Catching the one "accept" rule would require catching many "deny" rules. In particular, we "splice" the dependency chain by creating a small number of new rules that cover many low-weight rules and send the affected packets to the `software switch`. as shown in Figure (b).
 
@@ -83,7 +83,7 @@ To take a more general case, the old cost for the red rule in Figure (c) was the
 
 *****
 
-##Updating the rules incrementally
+`Updating the rules incrementally`
 
 When a new rule is inserted or an old rule is removed from the dependency graph, the graph is still maintained without incurring the complexity of the static algorithm shown above.
 
@@ -91,7 +91,7 @@ The key intuition is to store `edge-related metadata` so that we can incremental
 
 *****
 
-##CACHEFLOW SYSTEM DESIGN
+`CACHEFLOW SYSTEM DESIGN`
 
 CacheFlow consists of a `CacheMaster` module that receives `OpenFlow commands` from the `controller`, and uses the OpenFlow protocol to distribute `rules` to the `underlying switches`, as shown below.
 
