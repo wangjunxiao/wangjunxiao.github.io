@@ -11,20 +11,23 @@ Identifying SDN State Inconsistency in OpenStack_SOSR_2015
 
 *****
 
-##`MOTIVATION`
+`MOTIVATION`
 
 Openstack中的Edge-based SDN实现机制可概括为Server-DB-Agent-Client模式，可能会产生State Inconsistency，原因可分为三方面：
 
-####Unreliable State Dissemination：
+Unreliable State Dissemination
+
 一方面，Server（SDN Controller）向Client发送的网络配置，可能因为网络连接的不稳定，导致out of sync（Agent执行了配置任务，但是Server没有收到Agent回复）；另一方面，这些网络配置（对Iptables和OVS的配置）可能与Client上的其他软件或权限冲突（Server收到了Agent回复，但配置没有生效）。
 
-####Human Errors：
+Human Errors
+
 网络管理员对Client执行的reboot和patch操作，执行过程中产生错误，但是Server没有及时感知到。
 
-####Software Bugs：
+Software Bugs
+
 Edge-based SDN自有的bug使得Server（SDN Controller）发送的网络配置，不能最终映射为底层实现，并且很难检测到。
 
-####Inconsistency Example：
+Inconsistency Example：
 
 >
 >![]({{ site.img_url }}/2015-9-21/1.JPG)
@@ -34,7 +37,7 @@ Edge-based SDN自有的bug使得Server（SDN Controller）发送的网络配置�
 
 *****
 
-##`IMPLEMENTATION`
+`IMPLEMENTATION`
 
 >
 >![]({{ site.img_url }}/2015-9-21/2.JPG)
@@ -48,7 +51,7 @@ Edge-based SDN自有的bug使得Server（SDN Controller）发送的网络配置�
 
 *****
 
-##`NETWORK STATE ABSTRACTION`
+`NETWORK STATE ABSTRACTION`
 
 > L2状态：
 >![]({{ site.img_url }}/2015-9-21/4.JPG)
@@ -80,7 +83,7 @@ IP-MAC表示vm的ip and mac address，r=1，说明vm间L3可达。
 
 *****
 
-##`STATE PARSING`
+`STATE PARSING`
 
 L2：检查是否vm的internal vlanId被映射为同一个external L2 Id（vlan type：vlanId，gre/vxlan type：VNI），若符合，则L2可达。
 
@@ -98,7 +101,7 @@ L4：分析Iptables Chain（FORWARD），需对整个Forward Chain进行顺序�
 
 *****
 
-##`STATE VERIFICATION`
+`STATE VERIFICATION`
 
 L2：直接匹配Map。
 
