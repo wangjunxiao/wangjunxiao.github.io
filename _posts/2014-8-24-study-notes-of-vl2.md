@@ -11,7 +11,7 @@ VL2: 可扩展的灵活的数据中心网络架构_SIGCOMM_2009
 
 *****
 
-####`Introduction`
+`Introduction`
 
 * VL2使用了(1)**flat addressing**，允许service搭建在网络中任何位置; (2)**Valiant Load Balancing**，traffic均匀分布在网络中; (3)**基于end-system的address resolution**，构建更大规模的server pool并且不为network control plane引入complexity
 
@@ -54,7 +54,7 @@ Balancing (VLB)** to spread traffic across all available paths without any centr
 
 *****
 
-####`Inspiration`
+`Inspiration`
 
 >
 >![]({{ site.img_url }}/2014-8-24/dominant.JPG)
@@ -74,7 +74,7 @@ Balancing (VLB)** to spread traffic across all available paths without any centr
 
 *****
 
-####`Analysis`
+`Analysis`
 
 * Data-Center Traffic Analysis
 
@@ -88,7 +88,7 @@ Balancing (VLB)** to spread traffic across all available paths without any centr
 
 *****
 
-####`Separating names from locators`
+`Separating names from locators`
 
 * The data center network support for hosting any service on any server, for rapid growing and shrinking of server pools, and for rapid virtual machine migration. In turn, this calls for separating names from locations
 
@@ -100,7 +100,7 @@ Balancing (VLB)** to spread traffic across all available paths without any centr
 
 *****
 
-####`Scale-out Topologies`
+`Scale-out Topologies`
 
 * Conventional hierarchical data-center topologies have poor bisection bandwidth and are also susceptible to major disruptions due to device failures at the highest levels
 
@@ -116,7 +116,7 @@ Balancing (VLB)** to spread traffic across all available paths without any centr
 
 *****
 
-####`Address resolution and packet forwarding`
+`Address resolution and packet forwarding`
 
 >
 >![]({{ site.img_url }}/2014-8-24/address.JPG)
@@ -143,7 +143,7 @@ flow directly from a source to a destination, without being detoured to an **IP 
 
 *****
 
-####`Random traffic spreading over multiple paths`
+`Random traffic spreading over multiple paths`
 
 * To offer hot-spot-free performance for arbitrary traffic matrices, VL2 uses two related mechanisms: **VLB** and **ECMP**. The goals of both are similar — VLB distributes traffic across a set of intermediate nodes and ECMP distributes across equal-cost paths — but each is needed to overcome limitations in the other. VL2 uses flows,
 rather than packets, as the basic unit of traffic spreading and thus avoids out-of-order delivery.
@@ -161,7 +161,7 @@ from a source host, ECMP takes care of delivering packets encapsulated with the 
 
 *****
 
-####`The VL2 Directory System`
+`The VL2 Directory System`
 
 * The VL2 directory provides three key functions: (1) lookups and (2) updates for AA-to-LA mappings; and (3) a reactive cache update mechanism so that latency-sensitive updates (e.g., updating the AA to LA mapping for a virtual machine undergoing live migration) happen quickly.
 
