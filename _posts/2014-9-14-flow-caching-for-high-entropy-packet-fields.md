@@ -11,25 +11,25 @@ Flow Caching for High Entropy Packet Fields_HotSDN_2014
 
 *****
 
-##What's the question
+`What's the question`
 
 In this paper, we consider the problem of `flow caching` and more specifically, how to cache forwarding decisions that depend on `packet fields` with `high entropy` (and therefore, change often). In this paper, we consider tackling exactly this problem: how to compute `megaflow cache entries` such that we don’t converge to exact match connection caching even if the `slow path` operates over `L4 headers`.
 
 *****
 
-##Why study
+`Why to study`
 
 Network virtualization and network function virtualization value general purpose CPUs exactly for their flexibility: in such systems, a single x86 forwarding element does not implement a single, static classification step but a sequence of dynamically reconfigurable and potentially complex forwarding operations. This leaves a software developer looking for maximal packet forwarding throughput with few options besides flow caching. 
 
 *****
 
-##Innovativeness
+`Innovativeness`
 
 we arrive at algorithms that allow us to efficiently compute near optimal `flow cache entries` spanning several transport connections, even if forwarding decisions depend on transport protocol headers. 
 
 *****
 
-##Introduction
+`Introduction`
 
 Most definitions emphasize the role of the network `edge` in providing the complex `packet processing` functions: `forwarding` elements in the network `core` are left with high speed, low latency, and power efficient transportation of packets from a network edge to another. The edge provides the complex packet operations implementing network services and policies relevant for end hosts.
 
@@ -39,7 +39,7 @@ In this paper, we consider the problem of computing flow cache entries for forwa
 
 *****
 
-##Open vSwitch Flow Caching
+`Open vSwitch Flow Caching`
 
 Many modern software forwarding products rely on `flow caching`. For instance, `Open vSwitch` recognized early the need for a `slow path` for `complex` forwarding logic (in `userspace`) and a `fast path` for `simple` forwarding logic merely `replicating decisions` of the slow path (in `kernel`). Originally, the Open vSwitch flow cache was `exact match`. Upon entering the kernel, a packet’s headers would be looked up in a simple `hash` table using all the `packet fields` as a key. If `present`, the `cache` returned `instructions` for forwarding the packet. If `not present`, the packet would be sent to a `slow path` in `userspace` which executed the `full OpenFlow pipeline`, possibly consisting of several `packet classifications` (in the form of multiple `OpenFlow tables` traversed). The slow path would cache the decision in the kernel’s fast path for `subsequent packets` of the transport connection.
 
@@ -57,6 +57,6 @@ This algorithm works `fine` if the slow path exclusively matches `low-entropy` p
 
 *****
 
-##Conclusion
+`Conclusion`
 
 In this paper, we considered the problem of `computing flow cache entries` for `a slow path operating` over `high entropy packet fields`, such as transport protocol port numbers. After ruling out the ideal, `proactive header space` based algorithms as too expensive, we developed `heuristic`, `reactive` algorithms that provide `near optimal` results with `limited overhead` in the slow path. The `decision tree algorithm` produces a flow cache with a small number of `unique flow masks`, despite being suboptimal compared to the `common match algorithm` in identifying the most general flow cache entries. However, in `Open vSwitch`, the decision tree algorithm is preferred because the implemented `tuple space search packet classification algorithm` is O(n) in the number of masks, and software can handle the resulting larger cache size. In a memoryconstrained environment, or with a limited number of rules on high entropy fields, the common match algorithm would be preferred. We have contributed our results to `mainstream Open vSwitch` and its `megaflow` implementation now supports flow caching of forwarding decisions including `L4 headers`, without requiring `every new` forwarded transport connection to be handled by the slow path.
