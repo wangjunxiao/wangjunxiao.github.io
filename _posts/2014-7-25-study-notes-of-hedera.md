@@ -10,7 +10,7 @@ Hedera: 数据中心网络动态流调度_NSDI_2010
 
 *****
 
-####`Motivation`
+`Motivation`
 
 >
 >![]({{ site.img_url }}/2014-7-25/topo.JPG)
@@ -26,7 +26,7 @@ Hedera: 数据中心网络动态流调度_NSDI_2010
 
 *****
 
-####`Implementation`
+`Implementation`
 
 >
 >![]({{ site.img_url }}/2014-7-25/struc.JPG)
