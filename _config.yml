@@ -1,6 +1,6 @@
 destination:    ./_site
 lsi:            false
-highlighter:    pygments
+highlighter:    rouge
 permalink:      pretty
 extensions:     true
 exclude:        ['Rakefile', 'README.markdown', 'TODO.markdown', '_drafts', 'projects']
