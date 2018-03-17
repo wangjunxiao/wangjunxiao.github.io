@@ -1,6 +1,0 @@
-destination:    ./_site
-lsi:            false
-highlighter:    pygments
-permalink:      pretty
-extensions:     true
-exclude:        ['Rakefile', 'README.markdown', 'TODO.markdown', '_drafts', 'projects']
